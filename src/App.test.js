@@ -6,7 +6,7 @@ import App from "./App.vue";
 import { createAppRouter, requireAuth, requireGuest, routes } from "./router";
 import { putAccessToken } from "./helpers/apiHelper";
 import { getMe, getUsers } from "./features/users/api/userApi";
-import { getAucations } from "./features/aucations/api/aucationApi";
+import { getAucation, getAucations } from "./features/aucations/api/aucationApi";
 
 vi.mock("./features/users/api/userApi");
 vi.mock("./features/aucations/api/aucationApi");
@@ -28,6 +28,7 @@ describe("App routing", () => {
     getMe.mockResolvedValue({ success: true, data: { user: { id: 1, name: "Sandrina", email: "s@a.com", photo: null } } });
     getUsers.mockResolvedValue({ success: true, data: { users: [] } });
     getAucations.mockResolvedValue({ success: true, data: { aucations: [] } });
+    getAucation.mockResolvedValue({ success: false });
   });
 
   it("should expose route guards", () => {
@@ -59,6 +60,13 @@ describe("App routing", () => {
     expect(router.currentRoute.value.path).toBe("/");
     expect(wrapper.text()).toContain("Dashboard Lelang");
     expect(wrapper.text()).toContain("Sandrina");
+  });
+
+  it("should render the detail route for logged in users", async () => {
+    putAccessToken("tok");
+    const { wrapper } = await mountApp("/aucations/9");
+    expect(getAucation).toHaveBeenCalledWith("9");
+    expect(wrapper.text()).toContain("Lelang tidak ditemukan");
   });
 
   it("should redirect logged in users away from the auth pages", async () => {

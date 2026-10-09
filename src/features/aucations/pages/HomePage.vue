@@ -75,12 +75,12 @@ const onDeleteAll = async () => {
     <header class="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 class="text-2xl font-bold">Dashboard Lelang</h1>
-        <p class="text-sm text-slate-500">Temukan barang menarik dan ajukan penawaranmu.</p>
+        <p class="text-sm text-slate-600">Temukan barang menarik dan ajukan penawaranmu.</p>
       </div>
       <div class="flex gap-2">
         <button
           type="button"
-          class="inline-flex items-center gap-2 rounded-xl border border-rose-200 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50"
+          class="inline-flex items-center gap-2 rounded-xl border border-rose-200 px-4 py-2.5 text-sm font-semibold text-rose-700 hover:bg-rose-50"
           @click="onDeleteAll"
         >
           <Trash2 class="h-4 w-4" /> Hapus Semua
@@ -104,7 +104,7 @@ const onDeleteAll = async () => {
           :data-testid="`tab-${item.key}`"
           :class="[
             'rounded-xl px-4 py-2 text-sm font-semibold transition',
-            tab === item.key ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700',
+            tab === item.key ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-700',
           ]"
           @click="selectTab(item.key)"
         >
@@ -112,7 +112,7 @@ const onDeleteAll = async () => {
         </button>
       </div>
       <div class="relative w-full sm:w-72">
-        <Search class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <Search class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" />
         <input
           v-model="search"
           type="search"
@@ -122,8 +122,8 @@ const onDeleteAll = async () => {
       </div>
     </div>
 
-    <p v-if="aucationsStore.isAucation" class="text-slate-500">Memuat data lelang...</p>
-    <p v-else-if="filtered.length === 0" class="rounded-2xl bg-white p-10 text-center text-slate-500">
+    <p v-if="aucationsStore.isAucation" class="text-slate-600">Memuat data lelang...</p>
+    <p v-else-if="filtered.length === 0" class="rounded-2xl bg-white p-10 text-center text-slate-600">
       <Gavel class="mx-auto mb-2 h-8 w-8 text-slate-300" />
       Tidak ada lelang yang ditemukan.
     </p>
@@ -141,19 +141,19 @@ const onDeleteAll = async () => {
         </div>
         <div class="space-y-2 p-4">
           <h2 class="truncate text-base font-bold group-hover:text-indigo-700">{{ aucation.title }}</h2>
-          <p class="line-clamp-2 text-sm text-slate-500">{{ stripMarkdown(aucation.description) }}</p>
+          <p class="line-clamp-2 text-sm text-slate-600">{{ stripMarkdown(aucation.description) }}</p>
           <div class="flex items-end justify-between pt-1">
             <div>
-              <p class="text-xs text-slate-400">Harga awal</p>
+              <p class="text-xs text-slate-600">Harga awal</p>
               <p class="font-bold text-indigo-700">{{ formatRupiah(aucation.start_bid) }}</p>
             </div>
-            <p class="text-xs text-slate-500">{{ aucation.bids.length }} tawaran</p>
+            <p class="text-xs text-slate-600">{{ aucation.bids.length }} tawaran</p>
           </div>
           <p
             data-testid="countdown"
             :class="[
               'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold',
-              isAucationClosed(aucation.closed_at, now) ? 'bg-slate-100 text-slate-500' : 'bg-emerald-50 text-emerald-700',
+              isAucationClosed(aucation.closed_at, now) ? 'bg-slate-100 text-slate-600' : 'bg-emerald-50 text-emerald-700',
             ]"
           >
             <Hourglass class="h-3.5 w-3.5" /> {{ getCountdown(aucation.closed_at, now) }}

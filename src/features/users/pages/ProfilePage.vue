@@ -61,7 +61,7 @@ const buttonClass =
   <section class="space-y-6">
     <header>
       <h1 class="text-2xl font-bold">Profil Saya</h1>
-      <p class="text-sm text-slate-500">Kelola data akun, foto, dan kata sandi kamu.</p>
+      <p class="text-sm text-slate-600">Kelola data akun, foto, dan kata sandi kamu.</p>
     </header>
 
     <div v-if="usersStore.profile" class="grid gap-6 lg:grid-cols-2">
@@ -98,6 +98,7 @@ const buttonClass =
       <div class="space-y-6">
         <form class="space-y-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100" @submit.prevent="onSubmitPhoto">
           <h2 class="text-lg font-semibold">Foto Profil</h2>
+          <label for="photo" class="block text-sm font-medium">Pilih foto profil</label>
           <input id="photo" type="file" accept="image/*" :class="inputClass" @change="onPhotoChange" />
           <button type="submit" :disabled="!photoFile || usersStore.isProfileChange" :class="buttonClass">
             <Camera class="h-4 w-4" /> Unggah Foto
@@ -118,6 +119,6 @@ const buttonClass =
         </form>
       </div>
     </div>
-    <p v-else class="text-slate-500">Memuat profil...</p>
+    <p v-else class="text-slate-600">Memuat profil...</p>
   </section>
 </template>

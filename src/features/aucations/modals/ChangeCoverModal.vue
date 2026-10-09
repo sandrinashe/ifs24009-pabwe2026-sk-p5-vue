@@ -45,9 +45,10 @@ const onSubmit = async () => {
         </button>
       </div>
       <img v-if="preview" :src="preview" alt="Pratinjau cover" class="aspect-video w-full rounded-xl object-cover" />
-      <p v-else class="flex aspect-video items-center justify-center rounded-xl bg-slate-100 text-sm text-slate-500">
+      <p v-else class="flex aspect-video items-center justify-center rounded-xl bg-slate-100 text-sm text-slate-600">
         Belum ada cover
       </p>
+      <label for="cover" class="block text-sm font-medium">Pilih gambar cover</label>
       <input id="cover" type="file" accept="image/*" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" @change="onFileChange" />
       <button
         type="submit"

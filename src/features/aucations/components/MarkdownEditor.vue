@@ -1,15 +1,22 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
-import Editor from "@toast-ui/editor";
-import "@toast-ui/editor/dist/toastui-editor.css";
 
 const props = defineProps({ modelValue: { type: String, default: "" } });
 const emit = defineEmits(["update:modelValue"]);
 
 const root = ref(null);
 let editor;
+let isUnmounted = false;
 
-onMounted(() => {
+// Toast UI cukup besar, jadi dimuat hanya saat editor benar-benar ditampilkan.
+onMounted(async () => {
+  const [{ default: Editor }] = await Promise.all([
+    import("@toast-ui/editor"),
+    import("@toast-ui/editor/dist/toastui-editor.css"),
+  ]);
+  if (isUnmounted) {
+    return;
+  }
   editor = new Editor({
     el: root.value,
     height: "260px",
@@ -21,7 +28,10 @@ onMounted(() => {
   editor.on("change", () => emit("update:modelValue", editor.getMarkdown()));
 });
 
-onBeforeUnmount(() => editor.destroy());
+onBeforeUnmount(() => {
+  isUnmounted = true;
+  editor?.destroy();
+});
 </script>
 
 <template>

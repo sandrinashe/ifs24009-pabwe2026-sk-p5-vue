@@ -45,7 +45,7 @@ const onLogout = async () => {
     <div class="flex items-center gap-3">
       <div class="hidden text-right sm:block">
         <p data-testid="navbar-name" class="text-sm font-semibold">{{ displayName }}</p>
-        <p class="text-xs text-emerald-600">Sesi aktif</p>
+        <p class="text-xs text-emerald-700">Sesi aktif</p>
       </div>
       <img
         v-if="usersStore.profile?.photo"
@@ -62,7 +62,7 @@ const onLogout = async () => {
       </span>
       <button
         type="button"
-        class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-50"
+        class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-rose-700 hover:bg-rose-50"
         @click="onLogout"
       >
         <LogOut class="h-4 w-4" /> Keluar

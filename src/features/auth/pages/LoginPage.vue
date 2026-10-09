@@ -27,7 +27,7 @@ const onSubmit = async () => {
         Alamat Email
       </label>
       <div class="relative">
-        <Mail class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <Mail class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" />
         <input
           id="login-email-input"
           type="email"
@@ -44,7 +44,7 @@ const onSubmit = async () => {
         Kata Sandi
       </label>
       <div class="relative">
-        <Lock class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <Lock class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" />
         <input
           id="login-password-input"
           type="password"

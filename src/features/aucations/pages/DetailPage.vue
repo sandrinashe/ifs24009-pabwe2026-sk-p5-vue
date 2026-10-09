@@ -70,12 +70,12 @@ const ghostButton =
 
 <template>
   <section class="space-y-6">
-    <RouterLink to="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-700">
+    <RouterLink to="/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-700">
       <ArrowLeft class="h-4 w-4" /> Kembali ke dashboard
     </RouterLink>
 
-    <p v-if="aucationsStore.isAucation" class="text-slate-500">Memuat detail lelang...</p>
-    <p v-else-if="!aucation" class="rounded-2xl bg-white p-10 text-center text-slate-500">
+    <p v-if="aucationsStore.isAucation" class="text-slate-600">Memuat detail lelang...</p>
+    <p v-else-if="!aucation" class="rounded-2xl bg-white p-10 text-center text-slate-600">
       Lelang tidak ditemukan.
     </p>
     <template v-else>
@@ -99,29 +99,29 @@ const ghostButton =
         <aside class="space-y-4 lg:col-span-2">
           <div class="space-y-3 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
             <h1 class="text-2xl font-extrabold">{{ aucation.title }}</h1>
-            <p class="text-sm text-slate-500">
+            <p class="text-sm text-slate-600">
               Oleh <span data-testid="author">{{ aucation.author.name }}</span>
             </p>
             <p
               data-testid="status"
               :class="[
                 'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold',
-                isClosed ? 'bg-slate-100 text-slate-500' : 'bg-emerald-50 text-emerald-700',
+                isClosed ? 'bg-slate-100 text-slate-600' : 'bg-emerald-50 text-emerald-700',
               ]"
             >
               <Hourglass class="h-3.5 w-3.5" /> {{ getCountdown(aucation.closed_at) }}
             </p>
             <dl class="grid grid-cols-2 gap-3 pt-2 text-sm">
               <div>
-                <dt class="text-slate-400">Harga awal</dt>
+                <dt class="text-slate-600">Harga awal</dt>
                 <dd class="font-bold">{{ formatRupiah(aucation.start_bid) }}</dd>
               </div>
               <div>
-                <dt class="text-slate-400">Tawaran tertinggi</dt>
+                <dt class="text-slate-600">Tawaran tertinggi</dt>
                 <dd data-testid="highest" class="font-bold text-indigo-700">{{ formatRupiah(getHighestBid(aucation)) }}</dd>
               </div>
               <div class="col-span-2">
-                <dt class="text-slate-400">Ditutup pada</dt>
+                <dt class="text-slate-600">Ditutup pada</dt>
                 <dd class="font-semibold">{{ formatDate(aucation.closed_at) }}</dd>
               </div>
             </dl>
@@ -161,7 +161,7 @@ const ghostButton =
 
           <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
             <h2 class="mb-3 text-lg font-bold">Riwayat Penawaran</h2>
-            <p v-if="sortedBids.length === 0" class="text-sm text-slate-500">Belum ada penawaran.</p>
+            <p v-if="sortedBids.length === 0" class="text-sm text-slate-600">Belum ada penawaran.</p>
             <ol v-else class="space-y-2">
               <li
                 v-for="(item, index) in sortedBids"
@@ -170,7 +170,7 @@ const ghostButton =
                 class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2 text-sm"
               >
                 <span class="font-semibold">#{{ index + 1 }} {{ formatRupiah(item.bid) }}</span>
-                <span class="text-xs text-slate-500">{{ formatDate(item.created_at) }}</span>
+                <span class="text-xs text-slate-600">{{ formatDate(item.created_at) }}</span>
               </li>
             </ol>
           </div>

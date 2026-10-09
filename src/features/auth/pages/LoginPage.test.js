@@ -8,8 +8,8 @@ import { showErrorDialog } from "../../../helpers/toolsHelper";
 vi.mock("../../../helpers/toolsHelper", () => ({ showErrorDialog: vi.fn() }));
 
 const fill = async (wrapper) => {
-  await wrapper.find("#email").setValue("a@a.com");
-  await wrapper.find("#password").setValue("123456");
+  await wrapper.find("#login-email-input").setValue("a@a.com");
+  await wrapper.find("#login-password-input").setValue("123456");
 };
 
 describe("LoginPage", () => {
@@ -19,8 +19,8 @@ describe("LoginPage", () => {
 
   it("should render the form", async () => {
     const { wrapper } = await renderWithProviders(LoginPage);
-    expect(wrapper.find("#email").exists()).toBe(true);
-    expect(wrapper.find("button[type=submit]").text()).toContain("Masuk Sekarang");
+    expect(wrapper.find("#login-email-input").exists()).toBe(true);
+    expect(wrapper.find("#login-submit-button").text()).toContain("Masuk Sekarang");
   });
 
   it("should login and redirect to home", async () => {
@@ -51,7 +51,7 @@ describe("LoginPage", () => {
     const { wrapper } = await renderWithProviders(LoginPage);
     useAuthStore().isLoading = true;
     await flushPromises();
-    const button = wrapper.find("button[type=submit]");
+    const button = wrapper.find("#login-submit-button");
     expect(button.attributes("disabled")).toBeDefined();
     expect(button.text()).toContain("Memproses...");
   });

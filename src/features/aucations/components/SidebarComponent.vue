@@ -30,7 +30,7 @@ const isActive = (menu) => route.fullPath === router.resolve(menu.to).fullPath;
     <button
       type="button"
       aria-label="Tutup menu"
-      class="absolute right-3 top-4 rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+      class="absolute right-3 top-4 rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
       @click="emit('close')"
     >
       <X class="h-5 w-5" />

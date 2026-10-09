@@ -15,3 +15,9 @@
     cursor: pointer;
   }
 }
+
+/* Kontras tab bawaan Toast UI Editor (WCAG AA) */
+.toastui-editor-defaultUI .toastui-editor-tabs .tab-item:not(.active),
+.toastui-editor-defaultUI .toastui-editor-mode-switch .tab-item:not(.active) {
+  color: #475569;
+}
