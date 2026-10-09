@@ -23,13 +23,13 @@ const onSubmit = async () => {
 <template>
   <form class="space-y-5" @submit.prevent="onSubmit">
     <div>
-      <label for="email" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
+      <label for="login-email-input" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
         Alamat Email
       </label>
       <div class="relative">
         <Mail class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
         <input
-          id="email"
+          id="login-email-input"
           type="email"
           required
           placeholder="nama@email.com"
@@ -40,13 +40,13 @@ const onSubmit = async () => {
       </div>
     </div>
     <div>
-      <label for="password" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
+      <label for="login-password-input" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-600">
         Kata Sandi
       </label>
       <div class="relative">
         <Lock class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
         <input
-          id="password"
+          id="login-password-input"
           type="password"
           required
           placeholder="••••••••"
@@ -57,6 +57,7 @@ const onSubmit = async () => {
       </div>
     </div>
     <button
+      id="login-submit-button"
       type="submit"
       :disabled="authStore.isLoading"
       class="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700 disabled:opacity-60"
